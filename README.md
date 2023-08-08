@@ -16,9 +16,9 @@
 
 * Compiling, Training, and Evaluating the Model
   * Considering the large nature of the dataset, initially 2 hidden layers were used with 80 and 30 neutrons for each layer, respectively. The model accuracy was around 72.5%.
-![baseline_accuracy](image.png)
+![baseline_accuracy](baseline_accuracy.png)
   * Later, the `keras-tuner` package was implemented for auto-optimization to determine the best combination for the number of hidden layers and neutrons for each layer along with the desirable activation function. After 443 running trials, it was found that 3 hidden layers with respectively 1, 41, and 1 neurons output the best result when "relu" activation function was used for the hidden layers and "sigmoid" function was used for the output layer for the given preprocessed data. The model accuracy closed in to 73%.
-![best_accuracy](image-1.png)
+![best_accuracy](best_accuracy.png)
   * Even after 443 trials of auto optimization (around 3 hours of computing time), the accuracy was only able to reach 73%, which is still short of the target accuracy of 75%. The improvements were not significant considering the baseline accuracy was already 72.5%. Hence, performing such extensive iterations with auto-optimization may not be a worthwhile approach.
   * The first step taken to optimize the model was to reduce the number of bins for categorial columns `APPLICATION_TYPE` and `INCOME_AMT`, which did not result in significant improvement in model accuracy. Followed by this, increasing the number of neutrons for both hidden layers was found to improve the model accuracy slightly, by over 0.1%. Lastly, with the auto-optimization method, the best model yielded 73% accuracy, which is still not as significant especially considering that this approach requires vigorous computing power.
 
